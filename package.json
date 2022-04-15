@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "gts lint --fix",
     "clean": "gts clean",
     "compile": "tsc",

@@ -1,5 +1,7 @@
-export default function twClassnames(preset: String, custom: String) {
-  const classes = [...custom.split(' '), ...preset.split(' ')];
+import {duplicates} from './constants';
+
+export default function twClassnames(preset = '', custom = '') {
+  const classes = [...new Set([...custom.split(' '), ...preset.split(' ')])];
   for (let i = 0; i < classes.length; i++) {
     if (classes[i].includes('-')) {
       const regex = new RegExp(classes[i].split('-')[0] + '-');
@@ -8,7 +10,13 @@ export default function twClassnames(preset: String, custom: String) {
           classes.splice(idx, 1);
         }
       });
+    } else {
+      if (classes.filter(item => item.match(classes[i])).length > 1) {
+        if (duplicates.includes(classes[i])) {
+          classes.splice(i, 1);
+        }
+      }
     }
   }
-  return classes.join(' ');
+  return classes.join(' ').trim();
 }
