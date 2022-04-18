@@ -32,4 +32,10 @@ describe('Functional Tests', () => {
       twClassnames('rounded bg-red-400 border border-gray-900', 'rounded-lg')
     ).toEqual('rounded-lg bg-red-400 border border-gray-900');
   });
+
+  test.skip('it keeps duplicates with sudo selectors', () => {
+    expect(twClassnames('rounded', 'hover:rounded-lg')).toEqual(
+      'hover:rounded-lg rounded'
+    );
+  });
 });
