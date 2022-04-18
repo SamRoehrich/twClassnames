@@ -22,7 +22,7 @@ import twClassnames from 'twClassnames'
 
 export default Button = ({ className }) => {
     return (
-        <button className={twClassName('br-red-400', className)}>
+        <button className={twClassnames('br-red-400', className)}>
             Click Me
         </buutton>
     )
